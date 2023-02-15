@@ -91,7 +91,6 @@ namespace PlayMode {
 
       AssertData(new[] { "-", "+", "*", "*" });
       Execute();
-      Debug.Log(CalculateController.Result);
       Assert.AreEqual(true, float.TryParse(CalculateController.Result, out float result));
     }
 
