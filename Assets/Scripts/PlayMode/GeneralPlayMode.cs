@@ -16,7 +16,7 @@ namespace PlayMode {
     [UnityTest]
     public IEnumerator _LetterTest() {
       //Заранее сломанный тест
-      yield return new WaitForSeconds(0.1f);
+      yield return null;
 
       AssertData(new[] { "w", "/", "0" });
       Execute();
@@ -26,7 +26,7 @@ namespace PlayMode {
     [UnityTest]
     public IEnumerator _OperandsTest() {
       //Заранее сломанный тест
-      yield return new WaitForSeconds(0.1f);
+      yield return null;
 
       AssertData(new[] { "+", "-", "0,00000010" });
       Execute();
@@ -37,7 +37,7 @@ namespace PlayMode {
 
     [UnityTest]
     public IEnumerator SumTest() {
-      yield return new WaitForSeconds(0.1f);
+      yield return null;
       AssertData(new[] { "1", "+", "1" });
       Execute();
 
@@ -46,7 +46,7 @@ namespace PlayMode {
 
     [UnityTest]
     public IEnumerator DivineTest() {
-      yield return new WaitForSeconds(0.1f);
+      yield return null;
 
       AssertData(new[] { "1", "/", "0" });
       Execute();
@@ -60,7 +60,7 @@ namespace PlayMode {
 
     [UnityTest]
     public IEnumerator MultiplyTest() {
-      yield return new WaitForSeconds(0.1f);
+      yield return null;
 
       AssertData(new[] { "1", "*", "0" });
       Execute();
@@ -73,7 +73,7 @@ namespace PlayMode {
 
     [UnityTest]
     public IEnumerator SubtractionTest() {
-      yield return new WaitForSeconds(0.1f);
+      yield return null;
 
       AssertData(new[] { "0,00000011", "-", "0,00000010" });
       Execute();
@@ -84,10 +84,9 @@ namespace PlayMode {
       Assert.AreEqual(0.00000001f, float.Parse(CalculateController.Result));
     }
 
-
     [UnityTest]
     public IEnumerator OperandsTest() {
-      yield return new WaitForSeconds(0.1f);
+      yield return null;
 
       AssertData(new[] { "-", "+", "*", "*" });
       Execute();
@@ -96,7 +95,7 @@ namespace PlayMode {
 
     [UnityTest]
     public IEnumerator ZeroTest() {
-      yield return new WaitForSeconds(0.1f);
+      yield return null;
 
       AssertData(new[] { "0", "0", "-", "0" });
       Execute();
@@ -113,6 +112,28 @@ namespace PlayMode {
       AssertData(new[] { "0", "0", "/", "0" });
       Execute();
       Assert.AreEqual("Error", CalculateController.Result);
+    }
+
+    [UnityTest]
+    public IEnumerator Test() {
+      yield return null;
+      
+      AssertData(new[] { "0", "0", "-", "0" });
+      Execute();
+      AssertData(new[] { "0", "-", "1" });
+      Execute();
+      Assert.AreNotEqual(1, float.Parse(CalculateController.Result));
+    }
+    
+    [UnityTest]
+    public IEnumerator Test2() {
+      yield return null;
+      
+      AssertData(new[] { "0", "0", "-", "0" });
+      Execute();
+      AssertData(new[] { "1", "-", "/" });
+      Execute();
+      Assert.AreEqual(1, float.Parse(CalculateController.Result));
     }
 
     #region Executing Methods
